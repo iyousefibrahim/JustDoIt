@@ -31,8 +31,8 @@ export class TodoService {
     })
   }
 
-  getallTodos(todoId: string): Observable<any> {
-    return this._HttpClient.get(baseUrl + `api/v1/todos/${todoId}`)
+  getallTodos(apiKey: string): Observable<any> {
+    return this._HttpClient.get(baseUrl + `api/v1/todos/${apiKey}`)
   }
 
   getApiKey(): Observable<any> {
