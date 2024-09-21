@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TodoService } from '../../core/services/todo.service';
 import { Todo } from '../../core/interfaces/todo';
 import { DatePipe } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { TodoSearchPipe } from '../../core/pipes/todo-search.pipe';
 
@@ -33,32 +33,35 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  openInputModal() {
-    Swal.fire({
-      title: 'Enter your Todo Name',
-      input: 'text',
-      inputPlaceholder: 'Type your todo name',
-      showCancelButton: true,
-      confirmButtonText: 'Submit',
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      cancelButtonText: 'Cancel',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const inputValue = result.value;
-        this._TodoService.addTodo(inputValue, this.apiKey).subscribe({
-          next: (res) => {
-            this.getTodos();
-            Swal.fire({
-              title: 'Todo Added',
-              text: 'Your todo has been added successfully',
-              icon: 'success',
-            });
-          }
-        })
-      }
-    });
-  }
+ openInputModal() {
+  Swal.fire({
+    title: 'Enter your Todo Name',
+    input: 'text',
+    inputPlaceholder: 'Type your todo name',
+    showCancelButton: true,
+    confirmButtonText: 'Submit',
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: 'Cancel',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const inputValue = result.value;
+      this._TodoService.addTodo(inputValue, this.apiKey).subscribe({
+        next: (res) => {
+          this.getTodos();
+          Swal.fire({
+            title: 'Todo Added',
+            text: 'Your todo has been added successfully',
+            icon: 'success',
+          });
+        },
+        error: (err) => {
+          this._ToastrService.error('Failed to add Todo', 'Error');
+        }
+      });
+    }
+  });
+}
 
 
   deleteTodo(todoId: string): void {
