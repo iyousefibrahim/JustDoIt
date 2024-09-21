@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  userName = JSON.parse(localStorage.getItem('userName')!);
+  
 }

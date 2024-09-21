@@ -1,1 +1,66 @@
-<p>home works!</p>
+<main>
+
+    <div class="container my-3">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-10">
+
+                <div class="input-group">
+                    <span class="input-group-text rounded-start-4" id="basic-addon1">
+                        <i class="fa-solid fa-magnifying-glass "></i>
+                    </span>
+                    <input type="email" class="form-control rounded-end-4" id="exampleFormControlInput1"
+                        placeholder="Search">
+                </div>
+
+            </div>
+
+            <div class="col-md-2">
+                <div class="inner p-2 rounded-3 bg-main-color align-items-center d-flex justify-content-center">
+                    <i class="fa-solid fa-user bg-body-tertiary p-1 px-2 py-2 rounded-circle me-1"></i>
+                    <h5 class="m-0 text-white">{{userName}}</h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12 bg-body-tertiary rounded-top-4 pt-4">
+
+                <div class="d-flex justify-content-between border-black border-bottom mb-3 pb-2">
+                    <h3>My Todos</h3>
+                    <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Add New ToDo</button>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>Current Todos: 22</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-md-end justify-content-start">
+                            <h4 class="m-0 me-1">Filter per:</h4>
+                            <select class="form-select form-select-sm w-50" aria-label="Small select example">
+                                <option selected>Newist</option>
+                                <option value="2">Oldest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="todos" class="row gap-3 justify-content-center my-3">
+                    <div class="col-md-2 p-3 bg-body-secondary text-center">#</div>
+                    <div class="col-md-3 p-3 bg-body-secondary text-center">Name</div>
+                    <div class="col-md-2 p-3 bg-body-secondary text-center">Created At</div>
+                    <div class="col-md-2 p-3 bg-body-secondary text-center">Delete</div>
+                    <div class="col-md-2 p-3 bg-body-secondary text-center">Done</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
