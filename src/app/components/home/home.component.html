@@ -27,6 +27,7 @@
     </div>
 
 
+    @if (todosCount !== 0) {
     <div class="container my-5">
         <div class="row">
             <div class="col-md-12 bg-body-tertiary rounded-top-4 pt-4">
@@ -83,5 +84,20 @@
             </div>
         </div>
     </div>
+    }
+    @else {
+    <div class="container my-4">
+        <div class="row bg-body-tertiary rounded-top-4 pt-4">
+            <div class="col-md-12 my-3 text-center">
+                <h4>You Have No Todos Yet!</h4>
+
+
+                <button (click)="openInputModal()" class="btn btn-success" data-bs-toggle="modal"
+                    data-bs-target="#userTodo"><i class="fa-solid fa-plus"></i> Add New Todo</button>
+
+            </div>
+        </div>
+    </div>
+    }
 
 </main>
