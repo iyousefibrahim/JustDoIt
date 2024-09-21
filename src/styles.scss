@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Lexend:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import 'ngx-toastr/toastr';
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --primary-color: #277455;
+    --primary-dark: #003A23;
+    --sub-dark: #0E573A;
+    --primary-text: #74AE97;
+    --sub-text: #489174;
+}
+
+.bg-main-color {
+    background-color: var(--primary-color);
+}
+
+.bg-main-dark {
+    background-color: var(--primary-dark);
+}
+
+.bg-sub-dark {
+    background-color: var(--sub-dark);
+}
+
+.main-text {
+    color: var(--primary-text);
+}
+
+.sub-text {
+    color: var(--sub-text);
+}
+
+body {
+    background: rgb(14, 87, 58);
+    background: -moz-linear-gradient(90deg, rgba(14, 87, 58, 1) 0%, rgba(72, 145, 116, 1) 100%, rgba(116, 174, 151, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(14, 87, 58, 1) 0%, rgba(72, 145, 116, 1) 100%, rgba(116, 174, 151, 1) 100%);
+    background: linear-gradient(90deg, rgba(14, 87, 58, 1) 0%, rgba(72, 145, 116, 1) 100%, rgba(116, 174, 151, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0e573a", endColorstr="#74ae97", GradientType=1);
+}
