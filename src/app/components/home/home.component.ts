@@ -3,14 +3,15 @@ import { ToastrService } from 'ngx-toastr';
 import { TodoService } from '../../core/services/todo.service';
 import { Todo } from '../../core/interfaces/todo';
 import { DatePipe } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { TodoSearchPipe } from '../../core/pipes/todo-search.pipe';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DatePipe, ReactiveFormsModule],
+  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   apiKey = JSON.parse(localStorage.getItem('apiKey')!);
   allTodos!: Todo[];
   todosCount!: number;
+  searchText!: string;
 
   getTodos(): void {
     this._TodoService.getallTodos(this.apiKey).subscribe({

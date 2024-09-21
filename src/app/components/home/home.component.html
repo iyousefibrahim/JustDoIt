@@ -10,8 +10,8 @@
                     <span class="input-group-text rounded-start-4" id="basic-addon1">
                         <i class="fa-solid fa-magnifying-glass "></i>
                     </span>
-                    <input type="email" class="form-control rounded-end-4" id="exampleFormControlInput1"
-                        placeholder="Search">
+                    <input [(ngModel)]="searchText" type="email" class="form-control rounded-end-4"
+                        id="exampleFormControlInput1" placeholder="Search">
                 </div>
 
             </div>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                @for (todo of allTodos; track todo._id) {
+                @for (todo of allTodos|todoSearch:searchText; track todo._id) {
                 <div class="row justify-content-center my-3">
                     <div class="col-md-2 p-3 bg-body-secondary text-center">
                         <h5 class="m-0">{{$index + 1}}</h5>
