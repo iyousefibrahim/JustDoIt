@@ -3,8 +3,28 @@
         <div class="rounded-5 p-5">
             <h1 class="text-white">Welcome to JustDoIt</h1>
             <p class="text-white">Start now and stay on track with JustDoIt!</p>
-            <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Enter Your Name:">
-            <button type="button" class="btn btn-success">Do It!</button>
+            <form [formGroup]="userForm" (ngSubmit)="submitform()">
+                <input formControlName="name" type="text" class="form-control mb-3" placeholder="Enter Your Name:">
+                @if (userForm.get('name')?.errors && userForm.get('name')?.touched) {
+
+                    @if (userForm.get('name')?.hasError('required')) {
+                    <div class="alert-danger alert">
+                        <p class="m-0 text-start">Name Is Required!</p>
+                    </div>
+                    }
+                    @if (userForm.get('name')?.hasError('minlength')) {
+                    <div class="alert-danger alert">
+                        <p class="m-0 text-start">Name must be at least 3 chars!</p>
+                    </div>
+                    }
+                    @if (userForm.get('name')?.hasError('maxlength')) {
+                    <div class="alert-danger alert">
+                        <p class="m-0 text-start">Name cannot be more than 30 chars!</p>
+                    </div>
+                    }
+                }
+                <button [disabled]="userForm.invalid" type="submit" class="btn btn-success">Do It!</button>
+            </form>
         </div>
     </div>
 </section>
