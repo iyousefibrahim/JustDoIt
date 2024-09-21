@@ -4,6 +4,8 @@ import { TodoService } from '../../core/services/todo.service';
 import { Todo } from '../../core/interfaces/todo';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-home',
@@ -15,15 +17,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class HomeComponent implements OnInit {
   private readonly _ToastrService = inject(ToastrService);
   private readonly _TodoService = inject(TodoService);
-  private readonly _FormBuilder = inject(FormBuilder);
   userName = JSON.parse(localStorage.getItem('userName')!);
   apiKey = JSON.parse(localStorage.getItem('apiKey')!);
   allTodos!: Todo[];
   todosCount!: number;
-
-  todoForm: FormGroup = this._FormBuilder.group({
-    todoName: [null, [Validators.required]],
-  })
 
   getTodos(): void {
     this._TodoService.getallTodos(this.apiKey).subscribe({
@@ -34,17 +31,33 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-  addTodo() {
-    if (this.todoForm.valid) {
-      this._TodoService.addTodo(this.todoForm.value.todoName, this.apiKey).subscribe({
-        next: (res) => {
-          this.getTodos();
-          this._ToastrService.success('Todo added successfully', 'Success');
-        }
-      })
-    }
+  openInputModal() {
+    Swal.fire({
+      title: 'Enter your Todo Name',
+      input: 'text',
+      inputPlaceholder: 'Type your todo name',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const inputValue = result.value;
+        this._TodoService.addTodo(inputValue, this.apiKey).subscribe({
+          next: (res) => {
+            this.getTodos();
+            Swal.fire({
+              title: 'Todo Added',
+              text: 'Your todo has been added successfully',
+              icon: 'success',
+            });
+          }
+        })
+      }
+    });
   }
+
 
   deleteTodo(todoId: string): void {
     this._TodoService.deleteTodo(todoId).subscribe({

@@ -27,47 +27,14 @@
     </div>
 
 
-        <div #userTodo class="modal fade" id="userTodo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Todo</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form [formGroup]="todoForm" (submit)="addTodo()">
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Todo Name:</label>
-                            <input formControlName="todoName" type="text" class="form-control" id="recipient-name">
-                            @if (todoForm.get('todoName')?.errors && todoForm.get('todoName')?.touched) {
-
-                            @if (todoForm.get('todoName')?.hasError('required')) {
-                            <div class="alert-danger alert mt-3">
-                                <p class="m-0 text-start">Todo Name Is Required!</p>
-                            </div>
-                            }
-                            }
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button [disabled]="todoForm.invalid" type="submit" class="btn btn-primary">Add New Todo</button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    
-
     <div class="container my-5">
         <div class="row">
             <div class="col-md-12 bg-body-tertiary rounded-top-4 pt-4">
 
                 <div class="d-flex justify-content-between border-black border-bottom mb-3 pb-2">
                     <h3>My Todos</h3>
-                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#userTodo"><i
-                            class="fa-solid fa-plus"></i> Add New Todo</button>
+                    <button (click)="openInputModal()" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#userTodo"><i class="fa-solid fa-plus"></i> Add New Todo</button>
                 </div>
 
 
