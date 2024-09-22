@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
     this._TodoService.markCompleted(todoid).subscribe({
       next: (res) => {
         this.getTodos();
-        this._ToastrService.success('Congrats! You have Compleated your Todo!')
+        this._ToastrService.success('Congrats! You have Completed your Todo!')
       }
     });
   }

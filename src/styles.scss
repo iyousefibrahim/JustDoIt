@@ -20,6 +20,17 @@
     cursor: default;
 }
 
+.ngx-pagination a, .ngx-pagination button {
+    color: #BAFB07 !important;
+    display: block;
+    padding: .1875rem .625rem;
+    border-radius: 0;
+}
+
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+    background: #333533 !important;
+}
+
 .card-color {
     background-color: var(--card-color);
 }
