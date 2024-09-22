@@ -34,7 +34,8 @@
 
                 <div class="d-flex justify-content-between border-black border-bottom mb-3 pb-2">
                     <h3>My Todos</h3>
-                    <button (click)="openInputModal()" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add New Todo</button>
+                    <button (click)="openInputModal()" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add New
+                        Todo</button>
                 </div>
 
 
@@ -47,15 +48,15 @@
                     <div class="col-md-4">
                         <div class="d-flex justify-content-md-end justify-content-start">
                             <h4 class="m-0 me-1">Filter per:</h4>
-                            <select class="form-select form-select-sm w-50" aria-label="Small select example">
-                                <option selected>Newist</option>
-                                <option value="2">Oldest</option>
+                            <select [(ngModel)]="filterOption" class="form-select form-select-sm w-50" aria-label="Small select example">
+                                <option value="newest">Newest</option>
+                                <option value="oldest">Oldest</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                @for (todo of allTodos|todoSearch:searchText; track todo._id) {
+                @for (todo of allTodos| todoFilter:filterOption | todoSearch:searchText; track todo._id) {
                 <div class="row justify-content-center my-3">
                     <div class="col-md-2 p-3 bg-body-secondary text-center">
                         <h5 class="m-0">{{$index + 1}}</h5>

@@ -6,12 +6,13 @@ import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { TodoSearchPipe } from '../../core/pipes/todo-search.pipe';
+import { TodoFilterPipe } from '../../core/pipes/todo-filter.pipe';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule],
+  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule,TodoFilterPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
   allTodos!: Todo[];
   todosCount!: number;
   searchText!: string;
+  filterOption: string = 'newest';
 
   getTodos(): void {
     this._TodoService.getallTodos(this.apiKey).subscribe({
