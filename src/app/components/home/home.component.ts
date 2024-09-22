@@ -13,7 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule, TodoFilterPipe, NgxPaginationModule,NgClass],
+  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule, TodoFilterPipe, NgxPaginationModule, NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  
+
   changepage(event: any) {
     this.page = event;
   }
