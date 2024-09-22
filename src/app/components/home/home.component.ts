@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TodoService } from '../../core/services/todo.service';
 import { Todo } from '../../core/interfaces/todo';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass, NgStyle } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { TodoSearchPipe } from '../../core/pipes/todo-search.pipe';
@@ -13,7 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule, TodoFilterPipe, NgxPaginationModule],
+  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule, TodoFilterPipe, NgxPaginationModule,NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
