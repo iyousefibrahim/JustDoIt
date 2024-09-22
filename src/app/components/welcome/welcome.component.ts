@@ -16,6 +16,7 @@ export class WelcomeComponent {
   private readonly _TodoService = inject(TodoService);
   private readonly _ToastrService = inject(ToastrService);
   private readonly _Router = inject(Router);
+  videoSRC : string = "./assets/Training.mp4";
 
   userForm: FormGroup = this._FormBuilder.group({
     name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
