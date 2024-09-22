@@ -7,12 +7,13 @@ import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { TodoSearchPipe } from '../../core/pipes/todo-search.pipe';
 import { TodoFilterPipe } from '../../core/pipes/todo-filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule,TodoFilterPipe],
+  imports: [DatePipe, ReactiveFormsModule, TodoSearchPipe, FormsModule, TodoFilterPipe, NgxPaginationModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -25,6 +26,8 @@ export class HomeComponent implements OnInit {
   todosCount!: number;
   searchText!: string;
   filterOption: string = 'newest';
+  page: any = 1;
+  total!: any;
 
   getTodos(): void {
     this._TodoService.getallTodos(this.apiKey).subscribe({
@@ -35,35 +38,39 @@ export class HomeComponent implements OnInit {
     });
   }
 
- openInputModal() {
-  Swal.fire({
-    title: 'Enter your Todo Name',
-    input: 'text',
-    inputPlaceholder: 'Type your todo name',
-    showCancelButton: true,
-    confirmButtonText: 'Submit',
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    cancelButtonText: 'Cancel',
-  }).then((result) => {
-    if (result.isConfirmed) {
-      const inputValue = result.value;
-      this._TodoService.addTodo(inputValue, this.apiKey).subscribe({
-        next: (res) => {
-          this.getTodos();
-          Swal.fire({
-            title: 'Todo Added',
-            text: 'Your todo has been added successfully',
-            icon: 'success',
-          });
-        },
-        error: (err) => {
-          this._ToastrService.error('Failed to add Todo', 'Error');
-        }
-      });
-    }
-  });
-}
+  openInputModal() {
+    Swal.fire({
+      title: 'Enter your Todo Name',
+      input: 'text',
+      inputPlaceholder: 'Type your todo name',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const inputValue = result.value;
+        this._TodoService.addTodo(inputValue, this.apiKey).subscribe({
+          next: (res) => {
+            this.getTodos();
+            Swal.fire({
+              title: 'Todo Added',
+              text: 'Your todo has been added successfully',
+              icon: 'success',
+            });
+          },
+          error: (err) => {
+            this._ToastrService.error('Failed to add Todo', 'Error');
+          }
+        });
+      }
+    });
+  }
+  
+  changepage(event: any) {
+    this.page = event;
+  }
 
 
   deleteTodo(todoId: string): void {

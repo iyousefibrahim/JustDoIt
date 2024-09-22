@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                @for (todo of allTodos| todoFilter:filterOption | todoSearch:searchText; track todo._id) {
+                @for (todo of allTodos| todoFilter:filterOption | todoSearch:searchText | paginate: { id: 'todos', itemsPerPage: 10,currentPage: page,totalItems: todosCount }; track todo._id) {
                 <div class="row justify-content-center my-3">
                     <div class="col-md-2 p-3 bg-body-secondary text-center">
                         <h5 class="m-0">{{$index + 1}}</h5>
@@ -80,6 +80,10 @@
                     </div>
                 </div>
                 }
+
+                <div class="d-flex justify-content-center">
+                    <pagination-controls (pageChange)="changepage($event)" id="todos"></pagination-controls>
+                </div>
 
             </div>
         </div>
