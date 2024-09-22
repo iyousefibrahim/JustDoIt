@@ -7,41 +7,75 @@
 }
 
 :root {
-    --primary-color: #277455;
-    --primary-dark: #003A23;
-    --sub-dark: #0E573A;
-    --primary-text: #74AE97;
-    --sub-text: #489174;
+    --background-color: #333533;
+    --text-color: #BAFB07;
+    --button-color: #BAFB07;
+    --card-color: #242325;
 }
+
+.ngx-pagination .current {
+    padding: .1875rem .625rem;
+    background: #333533 !important;
+    color: #BAFB07 !important;
+    cursor: default;
+}
+
+.card-color {
+    background-color: var(--card-color);
+}
+
+
 
 .bg-main-color {
-    background-color: var(--primary-color);
-}
-
-.bg-main-dark {
-    background-color: var(--primary-dark);
-}
-
-.bg-sub-dark {
-    background-color: var(--sub-dark);
+    background-color: var(--background-color);
 }
 
 .main-text {
-    color: var(--primary-text);
+    color: var(--text-color);
 }
 
-.sub-text {
-    color: var(--sub-text);
-}
-
-body {
-    background: rgb(14, 87, 58);
-    background: -moz-linear-gradient(90deg, rgba(14, 87, 58, 1) 0%, rgba(72, 145, 116, 1) 100%, rgba(116, 174, 151, 1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(14, 87, 58, 1) 0%, rgba(72, 145, 116, 1) 100%, rgba(116, 174, 151, 1) 100%);
-    background: linear-gradient(90deg, rgba(14, 87, 58, 1) 0%, rgba(72, 145, 116, 1) 100%, rgba(116, 174, 151, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0e573a", endColorstr="#74ae97", GradientType=1);
+.main-btn {
+    background-color: var(--button-color);
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+
+button {
+    transition: 0.3s;
+}
+
+button:disabled {
+    opacity: 0.5;
+    transition: 0.3s;
+    cursor: not-allowed;
+}
+
+button:focus {
+    border: none;
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--button-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--background-color);
+    border: var(--bs-border-width) solid var(--background-color);
+    border-radius: var(--bs-border-radius);
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: transparent;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem var(--background-color);
 }

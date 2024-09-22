@@ -13,7 +13,7 @@ export const routes: Routes = [
     {
         path: "", component: StartLayoutComponent, canActivate: [hasApiKeyGuard], children: [
             { path: "", redirectTo: "welcome", pathMatch: "full" },
-            { path: "welcome", component: WelcomeComponent, title: "Welcome" }
+            { path: "welcome", component: WelcomeComponent, title: "JustDoIt" }
         ]
     },
     {

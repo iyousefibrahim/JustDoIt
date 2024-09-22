@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       cancelButtonText: 'Cancel',
+      background: '#f0f0f0',
     }).then((result) => {
       if (result.isConfirmed) {
         const inputValue = result.value;

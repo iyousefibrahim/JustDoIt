@@ -1,6 +1,6 @@
-<main>
+<main class="h-100">
 
-    <div class="container my-3">
+    <div class="container py-3">
 
         <div class="row align-items-center">
 
@@ -18,8 +18,8 @@
 
             <div class="col-md-2">
                 <div class="inner p-2 rounded-3 bg-main-color align-items-center d-flex justify-content-center">
-                    <i class="fa-solid fa-user bg-body-tertiary p-1 px-2 py-2 rounded-circle me-1"></i>
-                    <h5 class="m-0 text-white">{{userName}}</h5>
+                    <i class="fa-solid fa-user main-text p-1 px-2 py-2 rounded-circle me-2"></i>
+                    <h5 class="m-0 text-white main-text">{{userName}}</h5>
                 </div>
             </div>
 
@@ -28,27 +28,29 @@
 
 
     @if (todosCount !== 0) {
-    <div class="container my-5">
+    <div class="container py-5">
         <div class="row">
-            <div class="col-md-12 bg-body-tertiary rounded-top-4 pt-4">
+            <div class="col-md-12 card-color shadow-lg rounded-top-4 pt-4">
 
-                <div class="d-flex justify-content-between border-black border-bottom mb-3 pb-2">
-                    <h3>My Todos</h3>
-                    <button (click)="openInputModal()" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add New
-                        Todo</button>
+                <div class="d-flex justify-content-between border-white border-bottom mb-4 mt-2 pb-2">
+                    <h3 class="text-white">My Todos</h3>
+                    <button (click)="openInputModal()"
+                        class="main-btn text-black border-0 fw-bold p-2 px-4 rounded-5"><i class="fa-solid fa-plus"></i>
+                        Add NewTodo</button>
                 </div>
 
 
                 <div class="row">
                     <div class="col-md-8">
                         @if (todosCount !== 0) {
-                        <h4>Current Todos: {{todosCount}}</h4>
+                        <h4 class="text-white">Current Todos: <span class="main-text">{{todosCount}}</span></h4>
                         }
                     </div>
                     <div class="col-md-4">
                         <div class="d-flex justify-content-md-end justify-content-start">
-                            <h4 class="m-0 me-1">Filter per:</h4>
-                            <select [(ngModel)]="filterOption" class="form-select form-select-sm w-50" aria-label="Small select example">
+                            <h4 class="m-0 me-1 text-white">Filter per:</h4>
+                            <select [(ngModel)]="filterOption" class="form-select form-select-sm w-50"
+                                aria-label="Small select example">
                                 <option value="newest">Newest</option>
                                 <option value="oldest">Oldest</option>
                             </select>
@@ -56,27 +58,35 @@
                     </div>
                 </div>
 
-                @for (todo of allTodos| todoFilter:filterOption | todoSearch:searchText | paginate: { id: 'todos', itemsPerPage: 10,currentPage: page,totalItems: todosCount }; track todo._id) {
-                <div class="row justify-content-center my-3">
-                    <div class="col-md-2 p-3 bg-body-secondary text-center">
-                        <h5 class="m-0">{{$index + 1}}</h5>
-                    </div>
-                    <div class="col-md-3 p-3 bg-body-secondary text-center">
-                        <h5 class="m-0">{{todo.title}}</h5>
-                    </div>
-                    <div class="col-md-2 p-3 bg-body-secondary text-center">
-                        <h5 class="m-0">{{ todo.createdAt | date:'mediumDate' }}</h5>
-                    </div>
-                    <div class="col-md-2 p-3 bg-body-secondary text-center">
-                        <i (click)="deleteTodo(todo._id)" class="fa-solid fa-trash cursor-pointer text-danger fs-5"></i>
-                    </div>
-                    <div class="col-md-2 p-3 bg-body-secondary d-flex justify-content-center">
-                        @if(todo.completed === false){
-                        <i (click)="markComplete(todo._id)" class="fa-regular fa-circle-check cursor-pointer fs-5"></i>
-                        }
-                        @else {
-                        <i class="fa-solid fa-circle-check text-success fs-5"></i>
-                        }
+                @for (todo of allTodos| todoFilter:filterOption | todoSearch:searchText | paginate: { id: 'todos',
+                itemsPerPage: 10,currentPage: page,totalItems: todosCount }; track todo._id) {
+                <div class="row justify-content-center py-3">
+
+                    <div class="col-md-12 bg-white my-1p-4">
+                        <div class="row">
+                            <div class="col-md-2 p-3 text-center">
+                                <h5 class="m-0">{{$index + 1}}</h5>
+                            </div>
+                            <div class="col-md-4 p-3 text-center">
+                                <h5 class="m-0">{{todo.title}}</h5>
+                            </div>
+                            <div class="col-md-2 p-3 text-center">
+                                <h5 class="m-0">{{ todo.createdAt | date:'mediumDate' }}</h5>
+                            </div>
+                            <div class="col-md-2 p-3 text-center">
+                                <i (click)="deleteTodo(todo._id)"
+                                    class="fa-solid fa-trash cursor-pointer text-danger fs-5"></i>
+                            </div>
+                            <div class="col-md-2 p-3 d-flex justify-content-center">
+                                @if(todo.completed === false){
+                                <i (click)="markComplete(todo._id)"
+                                    class="fa-regular fa-circle-check cursor-pointer fs-5"></i>
+                                }
+                                @else {
+                                <i class="fa-solid fa-circle-check text-success fs-5"></i>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
                 }
@@ -90,15 +100,14 @@
     </div>
     }
     @else {
-    <div class="container my-4">
-        <div class="row bg-body-tertiary rounded-top-4 pt-4">
-            <div class="col-md-12 my-3 text-center">
-                <h4>You Have No Todos Yet!</h4>
+    <div class="container py-4">
+        <div class="row card-color shadow-lg rounded-4 pt-2">
+            <div class="col-md-12 my-3 text-center py-5">
+                <h4 class="text-white">You Have No <span class="main-text">Todos</span> Yet!</h4>
 
 
-                <button (click)="openInputModal()" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#userTodo"><i class="fa-solid fa-plus"></i> Add New Todo</button>
-
+                <button (click)="openInputModal()" class="main-btn text-black border-0 fw-bold p-2 px-5 rounded-5"><i
+                        class="fa-solid fa-plus"></i> Add New Todo</button>
             </div>
         </div>
     </div>
