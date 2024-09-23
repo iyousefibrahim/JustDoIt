@@ -1,27 +1,24 @@
-# JustDoIt
+# JustDoIt - To-Do List Application for Athletes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+JustDoIt is a specialized task management application designed for athletes to help them organize their training schedules, track their progress, and stay focused on their goals. Built using **Angular**, this app allows users to create, update, and delete tasks related to their fitness routines, ensuring they stay on top of their training priorities. Whether for personal fitness or competitive training, JustDoIt makes task management easy and effective.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Create Training Tasks:** Easily add new training-related tasks.
+- **Mark as Completed:** Mark tasks as completed or pending to track progress.
+- **Edit Tasks:** Update task details as necessary.
+- **Delete Tasks:** Remove tasks from the list when no longer needed.
+- **Search Functionality:** Quickly find tasks using the search feature.
+- **Pagination:** Navigate through long lists of tasks effortlessly.
+- **Guards:** Protect routes to ensure only authorized users can access certain features.
+- **Services:** Utilize services for task management and API interactions.
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Frontend:** HTML, CSS, TypeScript, Angular
+- **UI Framework:** Bootstrap
+- **Libraries:** ngx-loader, ngx-toaster, ngx-pagination
+- **Interceptors:** For handling API requests and responses
+- **Guards:** For route protection
+- **Services:** For task management and API integration
+- **APIs:** Integration with backend
